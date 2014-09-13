@@ -16,7 +16,7 @@ public class SearchActivity extends Activity {
 		
 		  final ListView listview = (ListView) findViewById(R.id.results_list);
 		    final ArrayList<ResultadoPublicacion> list = new ArrayList<ResultadoPublicacion>();
-		    for (int i = 0; i < 30; ++i) {
+		    for (int i = 0; i < 25; ++i) {
 		      list.add(new ResultadoPublicacion());
 		    }
 		    final SearchViewAdapter adapter = new SearchViewAdapter(this, list);

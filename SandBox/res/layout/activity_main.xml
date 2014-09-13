@@ -5,6 +5,7 @@
     tools:context="ar.uba.fi.sandbox.MainActivity" >
 
     <ImageView
+        android:contentDescription="fondo"
         android:id="@+id/item_preview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
