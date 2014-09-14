@@ -1,6 +1,8 @@
 package ar.uba.fi.sandbox;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -18,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import ar.uba.fi.sandbox.models.ResultadoPublicacion;
+import ar.uba.fi.sandbox.utils.SearchCache;
 import ar.uba.fi.sandbox.utils.SearchViewAdapter;
 
 
@@ -28,7 +31,7 @@ public class SearchActivity extends ListActivity {
 	static final int MENU_SET_MODE = 2;
 	static final int MENU_DEMO = 3;
 
-	private ArrayList<ResultadoPublicacion> mListItems;
+	private List<ResultadoPublicacion> mListItems;
 	private PullToRefreshListView mPullRefreshListView;
 	private ArrayAdapter<ResultadoPublicacion> mAdapter;
 
@@ -61,7 +64,7 @@ public class SearchActivity extends ListActivity {
 		// Need to use the Actual ListView when registering for Context Menu
 		registerForContextMenu(actualListView);
 
-		mListItems = new ArrayList<ResultadoPublicacion>();
+		mListItems = SearchCache.getInstance().getResults();
 		mAdapter = new SearchViewAdapter(this, mListItems);
 		actualListView.setAdapter(mAdapter);
 
@@ -88,15 +91,15 @@ public class SearchActivity extends ListActivity {
 		}
 
 		@Override
-		protected void onPostExecute( ArrayList<ResultadoPublicacion> result) {
-			mListItems.addAll(result);	
+		protected void onPostExecute( ArrayList<ResultadoPublicacion> results) {
+			mListItems = SearchCache.getInstance().addResults(results);	
 			
 			mAdapter.notifyDataSetChanged();
 
 			// Call onRefreshComplete when the list has been refreshed.
 			mPullRefreshListView.onRefreshComplete();
 
-			super.onPostExecute(result);
+			super.onPostExecute(results);
 		}
 	}
 
@@ -132,4 +135,12 @@ public class SearchActivity extends ListActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if(isFinishing()){
+			SearchCache.getInstance().clearResults();
+		}
+	}
 }
