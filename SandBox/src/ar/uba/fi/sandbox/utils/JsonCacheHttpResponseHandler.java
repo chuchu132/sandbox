@@ -12,15 +12,17 @@ public class JsonCacheHttpResponseHandler extends JsonHttpResponseHandler {
 	
 	public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 		if(statusCode != 0){
-			Log.e("JsonCache", "requestURI " +getRequestURI().toString());
-			Cache.saveTo(getRequestURI().toString(), response.toString());
+			String url = getRequestURI().toString().substring(0, getRequestURI().toString().indexOf('?'));
+			Log.e("JsonCache", "requestURI " + url);
+			Cache.saveTo(url, response.toString());
 		}
 	}
 	
 	public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 		if(statusCode != 0){
-			Log.e("JsonCache", "requestURI " +getRequestURI().toString());
-			Cache.saveTo(getRequestURI().toString(), response.toString());
+			String url = getRequestURI().toString().substring(0, getRequestURI().toString().indexOf('?'));
+			Log.e("JsonCache", "requestURI " + url);
+			Cache.saveTo(url, response.toString());
 		}
 	}
 

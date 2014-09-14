@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@color/semi_transparent"
+        android:background="@color/semi_black"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin" >
@@ -30,25 +30,44 @@
             android:textSize="45dp" />
 
         <Spinner
-            android:id="@+id/barrios"
+            android:id="@+id/operation_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
-            android:popupBackground="@color/semi_black"
             android:drawSelectorOnTop="true"
+            android:popupBackground="@color/semi_black"
             android:prompt="@string/seleccione_barrio"
             android:spinnerMode="dropdown" />
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/property_type"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Texto Busqueda"
-            android:textColor="#FFFFFF" >
+            android:background="@color/transparent"
+            android:drawSelectorOnTop="true"
+            android:popupBackground="@color/semi_black"
+            android:prompt="@string/seleccione_barrio"
+            android:spinnerMode="dropdown" />
 
-            <requestFocus />
-        </EditText>
+         <Spinner
+             android:id="@+id/neighborhood"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/transparent"
+             android:drawSelectorOnTop="true"
+             android:popupBackground="@color/semi_black"
+             android:prompt="@string/seleccione_barrio"
+             android:spinnerMode="dropdown" />
+
+         <CheckBox
+             android:id="@+id/include_neighbors"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@color/transparent"
+             android:shadowColor="@color/orange"
+             android:text="@string/con_zonas"
+             android:textColor="@color/white"
+             android:textSize="@dimen/mini_text" />
 
         <Button
             android:id="@+id/simple_search"

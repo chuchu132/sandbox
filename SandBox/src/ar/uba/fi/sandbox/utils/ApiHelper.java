@@ -35,9 +35,8 @@ public class ApiHelper {
 	
 	
 	public void getBarrios(JsonHttpResponseHandler responseHandler){
-		RequestParams rq =  new RequestParams("city_id", "sadasd");
 		String url_prueba = "http://goodshiplollipop.com.ar/barrios.php";
-		doGet(url_prueba,rq,responseHandler);
+		doGet(url_prueba,responseHandler);
 	}
 	
 	private void doGet(String url, JsonHttpResponseHandler responseHandler){

@@ -4,5 +4,6 @@
     <string name="app_name">SandBox</string>
     <string name="action_settings">Settings</string>
     <string name="seleccione_barrio">Seleccione un barrio</string>
+    <string name="con_zonas">Incluir zonas aledañas</string>
 
 </resources>
