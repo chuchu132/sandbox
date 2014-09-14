@@ -12,7 +12,6 @@ public class SandboxApp extends Application {
 
     public static Context getContext(){
         return instance;
-        // or return instance.getApplicationContext();
     }
 
     public void onCreate() {

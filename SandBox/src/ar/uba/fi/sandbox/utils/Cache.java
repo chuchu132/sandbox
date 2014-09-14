@@ -6,10 +6,6 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.util.Log;
 import ar.uba.fi.sandbox.SandboxApp;
@@ -40,15 +36,7 @@ public class Cache {
 			e.printStackTrace();
 		}
 	}
-	
-//	public static void saveTo(String key, JSONArray o){
-//		saveTo( key, o.toString());
-//	}
-//	
-//	public static void saveTo(String key, JSONObject o){
-//		saveTo( key, o.toString());
-//	}	
-	
+		
 	private static String toSHA1(byte[] convertme) {
 	    MessageDigest md = null;
 	    try {
