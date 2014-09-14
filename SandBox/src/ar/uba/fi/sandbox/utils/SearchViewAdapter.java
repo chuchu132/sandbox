@@ -1,6 +1,5 @@
 package ar.uba.fi.sandbox.utils;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.koushikdutta.urlimageviewhelper.UrlImageViewCallback;
@@ -22,7 +21,6 @@ import ar.uba.fi.sandbox.models.ResultadoPublicacion;
 public class SearchViewAdapter extends ArrayAdapter<ResultadoPublicacion> {
   private final Context context;
 
-  HashMap<ResultadoPublicacion, Integer> mIdMap = new HashMap<ResultadoPublicacion, Integer>();
   String[] url_images = {
 		  "http://www.alquilerentaturista.com.ar/apartamentos/buenosairesg.jpg",
 		  "http://www.rentnbaires.com/JUS/alquiler-temporario-departamentos/images/calo1.jpg",
@@ -38,9 +36,6 @@ public class SearchViewAdapter extends ArrayAdapter<ResultadoPublicacion> {
   public SearchViewAdapter(Context context,List<ResultadoPublicacion> objects) {
   	super(context, R.layout.search_result_item, objects);
   	this.context = context;
-    for (int i = 0; i < objects.size(); ++i) {
-        mIdMap.put(objects.get(i), i);
-     }
   }
 
   public View getView(int position, View rowView, ViewGroup parent) {
@@ -71,10 +66,6 @@ public class SearchViewAdapter extends ArrayAdapter<ResultadoPublicacion> {
     }
   
 
-  public long getItemId(int position) {
-    ResultadoPublicacion item = getItem(position);
-    return mIdMap.get(item);
-  }
 
   public boolean hasStableIds() {
     return true;

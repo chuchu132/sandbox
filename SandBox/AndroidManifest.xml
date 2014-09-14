@@ -29,6 +29,7 @@
         <activity android:name="AdvancedFormActivity"></activity>
         <activity android:name="SimpleFormActivity"></activity>
         <activity android:name="SearchActivity"></activity>
+        <activity android:name="SwipeRefreshActivity"></activity>
     </application>
 
 </manifest>
