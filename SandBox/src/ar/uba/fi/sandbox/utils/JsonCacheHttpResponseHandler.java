@@ -12,7 +12,8 @@ public class JsonCacheHttpResponseHandler extends JsonHttpResponseHandler {
 	
 	public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
 		if(statusCode != 0){
-			String url = getRequestURI().toString().substring(0, getRequestURI().toString().indexOf('?'));
+			int position = getRequestURI().toString().indexOf('?');
+			String url = getRequestURI().toString().substring(0,(position>0)?position:getRequestURI().toString().length() );
 			Log.e("JsonCache", "requestURI " + url);
 			Cache.saveTo(url, response.toString());
 		}
@@ -20,7 +21,8 @@ public class JsonCacheHttpResponseHandler extends JsonHttpResponseHandler {
 	
 	public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 		if(statusCode != 0){
-			String url = getRequestURI().toString().substring(0, getRequestURI().toString().indexOf('?'));
+			int position = getRequestURI().toString().indexOf('?');
+			String url =  getRequestURI().toString().substring(0,(position>0)?position:getRequestURI().toString().length() );
 			Log.e("JsonCache", "requestURI " + url);
 			Cache.saveTo(url, response.toString());
 		}
