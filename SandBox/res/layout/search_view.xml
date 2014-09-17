@@ -4,30 +4,21 @@
     android:layout_height="fill_parent"
     tools:context="ar.uba.fi.sandbox.MainActivity" >
 
-    <ImageView
-        android:id="@+id/item_preview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/city" />
-
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/pull_refresh_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        ptr:ptrHeaderTextColor="@android:color/white"
-		ptr:ptrHeaderSubTextColor="@android:color/white"
         android:cacheColorHint="#00000000"
-        android:divider="#00000000"
-        android:dividerHeight="0dp"
+        android:divider="#cccccc"
+        android:dividerHeight="1dp"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
+        android:showDividers="middle|end"
         android:smoothScrollbar="true"
-         />
-        
-	    
+        ptr:ptrHeaderSubTextColor="@color/apptheme_color"
+        ptr:ptrHeaderTextColor="@color/apptheme_color" />
 
 </RelativeLayout>

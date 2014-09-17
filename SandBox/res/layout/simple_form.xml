@@ -1,24 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="ar.uba.fi.sandbox.MainActivity" >
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/city" />
-
+    
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@color/semi_black"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="@dimen/activity_vertical_margin" >
+        android:padding="30dp" >
 
         <TextView
             android:id="@+id/subtitulo_item"
@@ -26,58 +20,49 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/app_name"
-            android:textColor="#ffffff"
-            android:textSize="45dp" />
+            android:textColor="@color/apptheme_color"
+            android:textSize="45dp"
+            android:typeface="sans" />
 
         <Spinner
             android:id="@+id/operation_type"
+            style="@style/SpinnerAppTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:drawSelectorOnTop="true"
-            android:popupBackground="@color/semi_black"
-            android:prompt="@string/seleccione_barrio"
-            android:spinnerMode="dropdown" />
+           />
 
         <Spinner
             android:id="@+id/property_type"
+            style="@style/SpinnerAppTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent"
-            android:drawSelectorOnTop="true"
-            android:popupBackground="@color/semi_black"
-            android:prompt="@string/seleccione_barrio"
-            android:spinnerMode="dropdown" />
+           
+             />
 
          <Spinner
              android:id="@+id/neighborhood"
+             style="@style/SpinnerAppTheme"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:background="@color/transparent"
-             android:drawSelectorOnTop="true"
-             android:popupBackground="@color/semi_black"
-             android:prompt="@string/seleccione_barrio"
-             android:spinnerMode="dropdown" />
+             />
 
          <CheckBox
              android:id="@+id/include_neighbors"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:background="@color/transparent"
-             android:shadowColor="@color/orange"
+             android:button="@drawable/apptheme_btn_check_holo_light"
              android:text="@string/con_zonas"
-             android:textColor="@color/white"
+             android:textColor="@color/apptheme_color"
              android:textSize="@dimen/mini_text" />
 
         <Button
             android:id="@+id/simple_search"
+            style="@style/ButtonAppTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#00ffffff"
             android:text="Buscar"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
-
+    
 </RelativeLayout>
