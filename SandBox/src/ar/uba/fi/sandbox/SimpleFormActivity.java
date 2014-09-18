@@ -6,6 +6,8 @@ import java.util.AbstractMap.SimpleEntry;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +25,6 @@ import ar.uba.fi.sandbox.models.SearchForm;
 import ar.uba.fi.sandbox.utils.ApiHelper;
 import ar.uba.fi.sandbox.utils.JsonCacheHttpResponseHandler;
 import ar.uba.fi.sandbox.utils.OperationTypeSpinnerAdapter;
-import ar.uba.fi.sandbox.utils.PropertyTypeSpinnerAdapter;
 import ar.uba.fi.sandbox.utils.SpinnerAdapter;
 
 public class SimpleFormActivity extends Activity {
@@ -33,6 +34,7 @@ public class SimpleFormActivity extends Activity {
 	Spinner propertyTypeSpinner = null;
 	CheckBox includeNeighborsCheck = null;
 	Button btnSearch  = null;
+	Button btnAdvancedSearch  = null;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.simple_form);
@@ -41,12 +43,7 @@ public class SimpleFormActivity extends Activity {
 		propertyTypeSpinner = (Spinner) findViewById(R.id.property_type);
 		includeNeighborsCheck = (CheckBox) findViewById(R.id.include_neighbors);
 		btnSearch =  (Button) findViewById(R.id.simple_search);
-		btnSearch.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent i = new Intent(SimpleFormActivity.this,SearchActivity.class);
-				SimpleFormActivity.this.startActivity(i);
-			}
-		});
+		btnAdvancedSearch =  (Button) findViewById(R.id.advanced_search);
 		
 		setListeners();
 	}
@@ -55,7 +52,9 @@ public class SimpleFormActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		neighborhoodsSpinner.setEnabled(false);
+		propertyTypeSpinner.setEnabled(false);
 		btnSearch.setEnabled(false);
+		btnAdvancedSearch.setEnabled(false);
 		initForm();
 	}
 	
@@ -63,34 +62,36 @@ public class SimpleFormActivity extends Activity {
 	private void initForm(){
 		
 		operationtypeSpinner.setAdapter(new OperationTypeSpinnerAdapter(this));
-		propertyTypeSpinner.setAdapter(new PropertyTypeSpinnerAdapter(this));
 		
-		ApiHelper.getInstance().getBarrios(new JsonCacheHttpResponseHandler(){
+		ApiHelper.getInstance().getNeighborhoodsByCity(new JsonCacheHttpResponseHandler(){
 			public void onSuccess(int statusCode, Header[] headers,	JSONArray response) {
 				super.onSuccess(statusCode, headers, response);
-				
-				ArrayList<String> options=new ArrayList<String>();
-				for (int i = 0; i < response.length(); i++) {
-					try {
-						options.add(response.getString(i));
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-				 ArrayAdapter<String> adapter = new SpinnerAdapter(SimpleFormActivity.this,android.R.layout.simple_spinner_item,options);
+				 ArrayAdapter<SimpleEntry<String, String>> adapter = new SpinnerAdapter(SimpleFormActivity.this,genericJSONArrayToEntryList(response));
 				 neighborhoodsSpinner.setAdapter(adapter);
 				 neighborhoodsSpinner.setEnabled(true);
-				 btnSearch.setEnabled(true);
+				 enableSearch();
+				 if(SearchForm.getField(FormField.BARRIO) != null ){
+						int position =adapter.getPosition(new SimpleEntry<String, String>((String)SearchForm.getField(FormField.BARRIO),null));
+						neighborhoodsSpinner.setSelection(position);
+				 }
 			}
 		});
 		
-		ArrayAdapter<SimpleEntry<String, String>> adapter = (ArrayAdapter<SimpleEntry<String, String>>)propertyTypeSpinner.getAdapter();
-		if(SearchForm.getField(FormField.TIPO_INMUEBLE) != null ){
-			int position =adapter.getPosition(new SimpleEntry<String, String>((String)SearchForm.getField(FormField.TIPO_INMUEBLE),null));
-			propertyTypeSpinner.setSelection(position);
-		}
+		ApiHelper.getInstance().getPropertyTypes(new JsonCacheHttpResponseHandler(){
+			public void onSuccess(int statusCode, Header[] headers,	JSONArray response) {
+				super.onSuccess(statusCode, headers, response);
+				 ArrayAdapter<SimpleEntry<String, String>> adapter = new SpinnerAdapter(SimpleFormActivity.this,genericJSONArrayToEntryList(response));
+				 propertyTypeSpinner.setAdapter(adapter);
+				 propertyTypeSpinner.setEnabled(true);
+				 enableSearch();	
+				 if(SearchForm.getField(FormField.TIPO_INMUEBLE) != null ){
+						int position =adapter.getPosition(new SimpleEntry<String, String>((String)SearchForm.getField(FormField.TIPO_INMUEBLE),null));
+						propertyTypeSpinner.setSelection(position);
+				 }
+			}
+		});
 		
-		adapter = (ArrayAdapter<SimpleEntry<String, String>>)operationtypeSpinner.getAdapter();
+		ArrayAdapter<SimpleEntry<String, String>>  adapter = (ArrayAdapter<SimpleEntry<String, String>>)operationtypeSpinner.getAdapter();
 		if(SearchForm.getField(FormField.TIPO_OPERACION) != null ){
 			int position =adapter.getPosition(new SimpleEntry<String, String>((String)SearchForm.getField(FormField.TIPO_OPERACION),null));
 			operationtypeSpinner.setSelection(position);
@@ -100,6 +101,19 @@ public class SimpleFormActivity extends Activity {
 	}
 	
 	private void setListeners(){
+		
+		btnSearch.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(SimpleFormActivity.this,SearchActivity.class);
+				SimpleFormActivity.this.startActivity(i);
+			}
+		});
+		btnAdvancedSearch.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(SimpleFormActivity.this,AdvancedFormActivity.class);
+				SimpleFormActivity.this.startActivity(i);
+			}
+		});
 		
 		operationtypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -142,6 +156,25 @@ public class SimpleFormActivity extends Activity {
 		});
 		
 	}
+	
+	private ArrayList<SimpleEntry<String, String>> genericJSONArrayToEntryList(JSONArray ja){
+		  ArrayList<SimpleEntry<String, String>> options =  new ArrayList<SimpleEntry<String, String>>();
+		  for (int i = 0; i < ja.length(); i++) {
+			try {
+				JSONObject jo = ja.getJSONObject(i);
+				options.add(new SimpleEntry<String, String>(jo.getString("id"),jo.getString("name")));
 
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		 return options;
+	}
+
+	
+	private  void enableSearch(){
+		 btnSearch.setEnabled(neighborhoodsSpinner.isEnabled() && propertyTypeSpinner.isEnabled() && operationtypeSpinner.isEnabled());
+		 btnAdvancedSearch.setEnabled(btnSearch.isEnabled());
+	}
 
 }

@@ -303,53 +303,71 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int placeholder=0x7f02007f;
     }
     public static final class id {
-        public static final int action_settings=0x7f05001c;
+        public static final int action_settings=0x7f050025;
+        public static final int advanced_search=0x7f050024;
         public static final int both=0x7f050003;
         public static final int buttonGo=0x7f05000d;
         public static final int disabled=0x7f050000;
-        public static final int fl_inner=0x7f05000e;
+        public static final int editText1=0x7f050012;
+        public static final int editText2=0x7f050014;
+        public static final int fl_inner=0x7f050015;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
-        public static final int include_neighbors=0x7f05001a;
-        public static final int item_preview=0x7f050014;
+        public static final int include_neighbors=0x7f050022;
+        public static final int item_preview=0x7f05001b;
         public static final int manualOnly=0x7f050004;
-        public static final int neighborhood=0x7f050019;
-        public static final int opcion=0x7f050013;
-        public static final int operation_type=0x7f050017;
-        public static final int property_type=0x7f050018;
+        public static final int neighborhood=0x7f050021;
+        public static final int opcion=0x7f05001a;
+        public static final int operation_type=0x7f05001f;
+        public static final int property_type=0x7f050020;
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_refresh_list=0x7f050016;
-        public static final int pull_to_refresh_image=0x7f05000f;
-        public static final int pull_to_refresh_progress=0x7f050010;
-        public static final int pull_to_refresh_sub_text=0x7f050012;
-        public static final int pull_to_refresh_text=0x7f050011;
+        public static final int pull_refresh_list=0x7f05001d;
+        public static final int pull_to_refresh_image=0x7f050016;
+        public static final int pull_to_refresh_progress=0x7f050017;
+        public static final int pull_to_refresh_sub_text=0x7f050019;
+        public static final int pull_to_refresh_text=0x7f050018;
+        public static final int radioButton1=0x7f050010;
+        public static final int radioButton2=0x7f05000f;
         public static final int rotate=0x7f050007;
+        public static final int scrollView1=0x7f05001e;
         public static final int scrollview=0x7f05000b;
-        public static final int simple_search=0x7f05001b;
-        public static final int subtitulo_item=0x7f050015;
+        public static final int simple_search=0x7f050023;
+        public static final int subtitulo_item=0x7f05001c;
+        public static final int textView1=0x7f050011;
+        public static final int textView2=0x7f05000e;
+        public static final int textView3=0x7f050013;
         public static final int titulo_item=0x7f05000c;
         public static final int webview=0x7f05000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int apptheme_tab_indicator_holo=0x7f030001;
-        public static final int pull_to_refresh_header_horizontal=0x7f030002;
-        public static final int pull_to_refresh_header_vertical=0x7f030003;
-        public static final int row=0x7f030004;
-        public static final int search_result_item=0x7f030005;
-        public static final int search_view=0x7f030006;
-        public static final int simple_form=0x7f030007;
+        public static final int advanced_search=0x7f030001;
+        public static final int apptheme_tab_indicator_holo=0x7f030002;
+        public static final int pull_to_refresh_header_horizontal=0x7f030003;
+        public static final int pull_to_refresh_header_vertical=0x7f030004;
+        public static final int row=0x7f030005;
+        public static final int search_result_item=0x7f030006;
+        public static final int search_view=0x7f030007;
+        public static final int simple_form=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
     }
     public static final class string {
         public static final int action_settings=0x7f070007;
+        public static final int advanced_search=0x7f07000a;
         public static final int app_name=0x7f070006;
         public static final int con_zonas=0x7f070009;
+        public static final int distribucion=0x7f070012;
+        public static final int dolar=0x7f07000c;
+        public static final int moneda=0x7f07000e;
+        public static final int pero=0x7f07000d;
+        public static final int precio=0x7f07000f;
+        public static final int precio_desde=0x7f070010;
+        public static final int precio_hasta=0x7f070011;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
          */
@@ -360,6 +378,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pull_to_refresh_refreshing_label=0x7f070002;
         public static final int pull_to_refresh_release_label=0x7f070001;
         public static final int seleccione_barrio=0x7f070008;
+        public static final int simple_search=0x7f07000b;
     }
     public static final class style {
         /** 

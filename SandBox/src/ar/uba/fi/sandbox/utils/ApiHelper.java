@@ -24,20 +24,17 @@ public class ApiHelper {
 		doPost(Config.BASEURL + Config.PUBLICACIONES_CONTROLLER + "search", responseHandler);
 	} 
 	
+	public void getPropertyTypes(JsonHttpResponseHandler responseHandler){
+		doGet(Config.BASEURL + Config.TIPO_PROPIEDADES_CONTROLLER, responseHandler);
+	} 
+	
 	public void getNeighborhoodsByCity(JsonHttpResponseHandler responseHandler){
 		 getNeighborhoodsByCity(Config.CAPITAL_FEDERAL_ID,responseHandler);
 	}
 
 	public void getNeighborhoodsByCity(int city_id,JsonHttpResponseHandler responseHandler){
-		RequestParams rq =  new RequestParams("city_id", city_id);
-		doGet(Config.BASEURL + Config.BARRIOS_CONTROLLER + "get_by_city",rq,responseHandler);
+		doGet(Config.BASEURL + Config.BARRIOS_CONTROLLER,responseHandler);
 	} 
-	
-	
-	public void getBarrios(JsonHttpResponseHandler responseHandler){
-		String url_prueba = "http://goodshiplollipop.com.ar/barrios.php";
-		doGet(url_prueba,responseHandler);
-	}
 	
 	private void doGet(String url, JsonHttpResponseHandler responseHandler){
 		doGet(url,null, responseHandler);
