@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    xmlns:edit="http://schemas.android.com/apk/res-auto"
+    tools:context=".AdvancedSearchForm" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,81 +15,64 @@
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+        
+ <ar.uba.fi.sandbox.custom.MonedaComponent
+        android:id="@+id/monedaComponent1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
+    
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/moneda"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/apptheme_color" />
+ <ar.uba.fi.sandbox.custom.RangoPreciosComponent
+     android:id="@+id/rangoPreciosComponent1"
+      android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/pero" />
-
-            <RadioButton
-                android:id="@+id/radioButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dolar" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/precio"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/apptheme_color" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <EditText
-                    android:id="@+id/editText1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/precio_desde"
-                    android:inputType="numberDecimal" >
-
-                    <requestFocus />
-                </EditText>
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="-"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
-                    android:id="@+id/editText2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/precio_hasta"
-                    android:inputType="numberDecimal" />
-            </LinearLayout>
-        </LinearLayout>
-
+ <ar.uba.fi.sandbox.custom.EditTextComponent
+     android:id="@+id/editTextComponent1"
+     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        edit:label="@string/sup_cubierta"
+        edit:hint="@string/sup_unidad"
+        android:inputType="numberDecimal"
+        edit:name="sup_cubierta"
+        />
+ <ar.uba.fi.sandbox.custom.EditTextComponent
+     android:id="@+id/editTextComponent2"
+     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        edit:label="@string/sup_total"
+        edit:hint="@string/sup_unidad"
+        android:inputType="numberDecimal"
+        edit:name="sup_total"
+        />
+ <ar.uba.fi.sandbox.custom.EditTextComponent
+     android:id="@+id/editTextComponent3"
+     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        edit:label="@string/antiguedad"
+        edit:hint="@string/antiguedad_unidad"
+        android:inputType="number"
+        edit:name="antiguedad"
+        />
+  <ar.uba.fi.sandbox.custom.EditTextComponent
+     android:id="@+id/editTextComponent4"
+     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        edit:label="@string/expensas"
+        edit:hint="@string/expensas_unidad"
+        android:inputType="number"
+        edit:name="expensas"
+        /> 
+  <ar.uba.fi.sandbox.custom.BooleanComponent
+     android:id="@+id/booleanComponent1"
+     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        edit:label="@string/a_estrenar"
+        edit:name="a_estrenar"
+        /> 
     </LinearLayout>
+
+   
 
 </ScrollView>

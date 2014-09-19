@@ -2,17 +2,28 @@
 <resources>
 
     <string name="app_name">MiLEEM</string>
+    <string name="dummy">dummy</string>
     <string name="action_settings">Settings</string>
     <string name="seleccione_barrio">Seleccione un barrio</string>
     <string name="con_zonas">Incluir zonas aledañas</string>
     <string name="advanced_search">Búsqueda Avanzada</string>
     <string name="simple_search">Buscar</string>
     <string name="dolar">U$S</string>
-    <string name="pero">$</string>
+    <string name="peso">$</string>
     <string name="moneda">Moneda</string>
     <string name="precio">Precio</string>
     <string name="precio_desde">desde</string>
     <string name="precio_hasta">hasta</string>
+    <string name="a_estrenar">A estrenar</string>
+    <string name="sup_total">Superficie total</string>
+    <string name="sup_cubierta">Superficie cubierta</string>
+    <string name="sup_unidad">m2</string>
+    <string name="antiguedad">Antiguedad</string>
+    <string name="antiguedad_unidad">años</string>
+    <string name="expensas">Expensas</string>
+    <string name="expensas_unidad">$</string>
     <string name="distribucion">Distribución</string>
+    <string name="upp_si">SI</string>
+    <string name="upp_no">NO</string>
 
 </resources>

@@ -19,11 +19,15 @@ public class SearchForm {
 	public static void setField(FormField field,int value){
 		form.put(field,Integer.valueOf(value));
 	}
+
+	public static void removeField(FormField field){
+		form.remove(field);
+	}
 	
 	public static RequestParams getAsRequestParams(){
 		RequestParams rp = new RequestParams();
 		for (FormField key : form.keySet()) {
-			rp.put(key.toString(),form.get(key.toString()));
+			rp.put(key.toString(),form.get(key));
 		}
 		return rp;
 	}
