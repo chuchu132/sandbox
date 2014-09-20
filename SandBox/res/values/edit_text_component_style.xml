@@ -12,4 +12,8 @@
         <attr name="name" />
     </declare-styleable>
 
+     <declare-styleable name="CustomComponentsGroup">
+        <attr name="label"  />
+    </declare-styleable>
+
 </resources> 

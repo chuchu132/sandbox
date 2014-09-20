@@ -15,7 +15,10 @@ public enum FormField {
     AMBIENTES("ambientes"),
     EXPENSAS("expensas"),
     ANTIGUEDAD("antiguedad"),
-    A_ESTRENAR("a_estrenar")
+    A_ESTRENAR("a_estrenar"),
+    BANOS("banos"),
+    BALCON("balcon"),
+    EN_SUITE("en_suite"),
     
     ;
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:edit="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:edit="http://schemas.android.com/apk/res-auto"
     tools:context=".AdvancedSearchForm" >
 
     <LinearLayout
@@ -14,65 +14,109 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
-
         
- <ar.uba.fi.sandbox.custom.MonedaComponent
-        android:id="@+id/monedaComponent1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
-    
+        <ar.uba.fi.sandbox.custom.CustomComponentsGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            edit:label="@string/caracteristicas_generales" >
+        <ar.uba.fi.sandbox.custom.MonedaComponent
+            android:id="@+id/monedaComponent1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
- <ar.uba.fi.sandbox.custom.RangoPreciosComponent
-     android:id="@+id/rangoPreciosComponent1"
-      android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <ar.uba.fi.sandbox.custom.RangoPreciosComponent
+            android:id="@+id/rangoPreciosComponent1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
- <ar.uba.fi.sandbox.custom.EditTextComponent
-     android:id="@+id/editTextComponent1"
-     android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        edit:label="@string/sup_cubierta"
-        edit:hint="@string/sup_unidad"
-        android:inputType="numberDecimal"
-        edit:name="sup_cubierta"
-        />
- <ar.uba.fi.sandbox.custom.EditTextComponent
-     android:id="@+id/editTextComponent2"
-     android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        edit:label="@string/sup_total"
-        edit:hint="@string/sup_unidad"
-        android:inputType="numberDecimal"
-        edit:name="sup_total"
-        />
- <ar.uba.fi.sandbox.custom.EditTextComponent
-     android:id="@+id/editTextComponent3"
-     android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        edit:label="@string/antiguedad"
-        edit:hint="@string/antiguedad_unidad"
-        android:inputType="number"
-        edit:name="antiguedad"
-        />
-  <ar.uba.fi.sandbox.custom.EditTextComponent
-     android:id="@+id/editTextComponent4"
-     android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        edit:label="@string/expensas"
-        edit:hint="@string/expensas_unidad"
-        android:inputType="number"
-        edit:name="expensas"
-        /> 
-  <ar.uba.fi.sandbox.custom.BooleanComponent
-     android:id="@+id/booleanComponent1"
-     android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        edit:label="@string/a_estrenar"
-        edit:name="a_estrenar"
-        /> 
+        <ar.uba.fi.sandbox.custom.EditTextComponent
+            android:id="@+id/editTextComponent1"
+            edit:name="sup_cubierta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            edit:hint="@string/sup_unidad"
+            edit:label="@string/sup_cubierta" />
+
+        <ar.uba.fi.sandbox.custom.EditTextComponent
+            android:id="@+id/editTextComponent2"
+            edit:name="sup_total"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            edit:hint="@string/sup_unidad"
+            edit:label="@string/sup_total" />
+
+        <ar.uba.fi.sandbox.custom.EditTextComponent
+            android:id="@+id/editTextComponent3"
+            edit:name="antiguedad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            edit:hint="@string/antiguedad_unidad"
+            edit:label="@string/antiguedad" />
+
+        <ar.uba.fi.sandbox.custom.EditTextComponent
+            android:id="@+id/editTextComponent4"
+            edit:name="expensas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            edit:hint="@string/expensas_unidad"
+            edit:label="@string/expensas" />
+
+        <ar.uba.fi.sandbox.custom.BooleanComponent
+            android:id="@+id/booleanComponent1"
+            edit:name="a_estrenar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            edit:label="@string/a_estrenar" />
+       </ar.uba.fi.sandbox.custom.CustomComponentsGroup>
+
+		<View
+		    style="@style/Divider"
+		    android:layout_marginBottom="@dimen/activity_vertical_margin"
+		    android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+        <ar.uba.fi.sandbox.custom.CustomComponentsGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            edit:label="@string/otras_caracteristicas" >
+
+            <ar.uba.fi.sandbox.custom.EditTextComponent
+                android:id="@+id/editTextComponent5"
+                edit:name="ambientes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                edit:hint="@string/mas_de"
+                edit:label="@string/cant_ambientes" />
+
+            <ar.uba.fi.sandbox.custom.EditTextComponent
+                android:id="@+id/editTextComponent6"
+                edit:name="banos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                edit:hint="@string/mas_de"
+                edit:label="@string/banos" />
+
+            <ar.uba.fi.sandbox.custom.BooleanComponent
+                android:id="@+id/booleanComponent2"
+                edit:name="balcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                edit:label="@string/balcon" />
+
+            <ar.uba.fi.sandbox.custom.BooleanComponent
+                android:id="@+id/booleanComponent3"
+                edit:name="en_suite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                edit:label="@string/en_suite" />
+        </ar.uba.fi.sandbox.custom.CustomComponentsGroup>
     </LinearLayout>
-
-   
 
 </ScrollView>

@@ -70,8 +70,9 @@
   <style name="ToggleAppTheme" parent="android:Widget.Holo.Light.Button.Toggle">
       <item name="android:background">@drawable/apptheme_btn_toggle_holo_light</item>
   </style>
-  <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+   <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
       <item name="android:background">@color/apptheme_color</item>
+      <item name="android:icon">@drawable/ic_action_logors</item>
   </style>
 
 </resources>

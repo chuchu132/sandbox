@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import ar.uba.fi.sandbox.models.ResultadoPublicacion;
 import ar.uba.fi.sandbox.utils.SearchCache;
@@ -25,11 +27,6 @@ import ar.uba.fi.sandbox.utils.SearchViewAdapter;
 
 
 public class SearchActivity extends ListActivity {
-
-	static final int MENU_MANUAL_REFRESH = 0;
-	static final int MENU_DISABLE_SCROLL = 1;
-	static final int MENU_SET_MODE = 2;
-	static final int MENU_DEMO = 3;
 
 	private List<ResultadoPublicacion> mListItems;
 	private PullToRefreshListView mPullRefreshListView;
@@ -67,8 +64,6 @@ public class SearchActivity extends ListActivity {
 		mListItems = SearchCache.getInstance().getResults();
 		mAdapter = new SearchViewAdapter(this, mListItems);
 		actualListView.setAdapter(mAdapter);
-
-		
 	
 	}
 
@@ -103,11 +98,40 @@ public class SearchActivity extends ListActivity {
 		}
 	}
 
-	@Override
+	
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_MANUAL_REFRESH, 0, "Recargar");
-		return super.onCreateOptionsMenu(menu);
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.search_results_menu, menu);
+	    return super.onCreateOptionsMenu(menu);
 	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_refresh:
+	        	new GetDataTask().execute();
+				mPullRefreshListView.setRefreshing(true);
+				break;
+	        case R.id.sort_destacados:
+	            Toast.makeText(this, R.string.sort_destacadas, Toast.LENGTH_SHORT).show();
+	            break;
+	        case R.id.sort_precio_mayor:
+	            Toast.makeText(this, R.string.sort_precio_mayor, Toast.LENGTH_SHORT).show();
+	            break;
+	        case R.id.sort_precio_menor:
+	        	Toast.makeText(this, R.string.sort_precio_menor, Toast.LENGTH_SHORT).show();
+	        	break;
+	        case R.id.sort_recientes:
+	        	Toast.makeText(this, R.string.sort_recientes, Toast.LENGTH_SHORT).show();
+	        	break;
+	            default: return false;
+	    }
+	    return true;
+	}
+	
+
+	
+
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -118,24 +142,10 @@ public class SearchActivity extends ListActivity {
 		menu.add("Item 2");
 		menu.add("Item 3");
 		menu.add("Item 4");
-
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-
-		switch (item.getItemId()) {
-			case MENU_MANUAL_REFRESH:
-				new GetDataTask().execute();
-				mPullRefreshListView.setRefreshing(false);
-				break;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
-
-	
+		
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -143,4 +153,25 @@ public class SearchActivity extends ListActivity {
 			SearchCache.getInstance().clearResults();
 		}
 	}
+
+	  public boolean onMenuItemClick (MenuItem item) {
+		  switch (item.getItemId()) {
+	        case R.id.sort_destacados:
+	            Toast.makeText(this, R.string.sort_destacadas, Toast.LENGTH_SHORT).show();
+	            break;
+	        case R.id.sort_precio_mayor:
+	            Toast.makeText(this, R.string.sort_precio_mayor, Toast.LENGTH_SHORT).show();
+	            break;
+	        case R.id.sort_precio_menor:
+	        	Toast.makeText(this, R.string.sort_precio_menor, Toast.LENGTH_SHORT).show();
+	        	break;
+	        case R.id.sort_recientes:
+	        	Toast.makeText(this, R.string.sort_recientes, Toast.LENGTH_SHORT).show();
+	        	break;
+	        default:
+	        	return false;
+	    }
+		  return true;
+    }
+
 }

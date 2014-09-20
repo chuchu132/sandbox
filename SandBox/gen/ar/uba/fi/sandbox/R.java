@@ -315,58 +315,78 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int apptheme_textfield_focused_holo_light=0x7f020078;
         public static final int default_ptr_flip=0x7f020079;
         public static final int default_ptr_rotate=0x7f02007a;
-        public static final int ic_launcher=0x7f02007b;
-        public static final int indicator_arrow=0x7f02007c;
-        public static final int indicator_bg_bottom=0x7f02007d;
-        public static final int indicator_bg_top=0x7f02007e;
-        public static final int placeholder=0x7f02007f;
+        public static final int ic_action_logors=0x7f02007b;
+        public static final int ic_action_refresh=0x7f02007c;
+        public static final int ic_action_search=0x7f02007d;
+        public static final int ic_action_share=0x7f02007e;
+        public static final int ic_action_sort_by_size=0x7f02007f;
+        public static final int ic_chart=0x7f020080;
+        public static final int ic_launcher=0x7f020081;
+        public static final int indicator_arrow=0x7f020082;
+        public static final int indicator_bg_bottom=0x7f020083;
+        public static final int indicator_bg_top=0x7f020084;
+        public static final int placeholder=0x7f020085;
     }
     public static final class id {
-        public static final int action_settings=0x7f05002e;
-        public static final int advanced_search=0x7f05002c;
+        public static final int action_chart=0x7f050037;
+        public static final int action_refresh=0x7f050036;
+        public static final int action_search=0x7f050034;
+        public static final int action_settings=0x7f050035;
+        public static final int action_sort=0x7f050038;
+        public static final int advanced_search=0x7f050032;
         public static final int booleanComponent1=0x7f050014;
+        public static final int booleanComponent2=0x7f050017;
+        public static final int booleanComponent3=0x7f050018;
         public static final int both=0x7f050003;
         public static final int buttonGo=0x7f05000d;
-        public static final int container=0x7f050016;
-        public static final int desde=0x7f05001f;
+        public static final int check_all=0x7f05001a;
+        public static final int container=0x7f05001c;
+        public static final int desde=0x7f050025;
         public static final int disabled=0x7f050000;
-        public static final int dolar=0x7f050019;
+        public static final int dolar=0x7f05001f;
         public static final int editTextComponent1=0x7f050010;
         public static final int editTextComponent2=0x7f050011;
         public static final int editTextComponent3=0x7f050012;
         public static final int editTextComponent4=0x7f050013;
-        public static final int fl_inner=0x7f05001a;
+        public static final int editTextComponent5=0x7f050015;
+        public static final int editTextComponent6=0x7f050016;
+        public static final int fl_inner=0x7f050020;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
-        public static final int hasta=0x7f050021;
-        public static final int include_neighbors=0x7f05002a;
-        public static final int item_preview=0x7f050023;
-        public static final int label=0x7f050015;
+        public static final int hasta=0x7f050027;
+        public static final int include_neighbors=0x7f050030;
+        public static final int item_preview=0x7f050029;
+        public static final int label=0x7f05001b;
         public static final int manualOnly=0x7f050004;
         public static final int monedaComponent1=0x7f05000e;
-        public static final int neighborhood=0x7f050029;
-        public static final int opcion=0x7f050022;
-        public static final int operation_type=0x7f050027;
-        public static final int peso=0x7f050018;
-        public static final int property_type=0x7f050028;
+        public static final int neighborhood=0x7f05002f;
+        public static final int opcion=0x7f050028;
+        public static final int operation_type=0x7f05002d;
+        public static final int peso=0x7f05001e;
+        public static final int property_type=0x7f05002e;
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_refresh_list=0x7f050025;
-        public static final int pull_to_refresh_image=0x7f05001b;
-        public static final int pull_to_refresh_progress=0x7f05001c;
-        public static final int pull_to_refresh_sub_text=0x7f05001e;
-        public static final int pull_to_refresh_text=0x7f05001d;
+        public static final int pull_refresh_list=0x7f05002b;
+        public static final int pull_to_refresh_image=0x7f050021;
+        public static final int pull_to_refresh_progress=0x7f050022;
+        public static final int pull_to_refresh_sub_text=0x7f050024;
+        public static final int pull_to_refresh_text=0x7f050023;
         public static final int rangoPreciosComponent1=0x7f05000f;
         public static final int rotate=0x7f050007;
-        public static final int scrollView1=0x7f050026;
+        public static final int scrollView1=0x7f05002c;
         public static final int scrollview=0x7f05000b;
-        public static final int simple_search=0x7f05002b;
-        public static final int state=0x7f050017;
-        public static final int subtitulo_item=0x7f050024;
-        public static final int switch_id=0x7f05002d;
-        public static final int textView3=0x7f050020;
+        public static final int simple_search=0x7f050031;
+        public static final int sort_destacados=0x7f050039;
+        public static final int sort_precio_mayor=0x7f05003a;
+        public static final int sort_precio_menor=0x7f05003b;
+        public static final int sort_recientes=0x7f05003c;
+        public static final int state=0x7f05001d;
+        public static final int subtitulo_item=0x7f05002a;
+        public static final int switch_id=0x7f050033;
+        public static final int textView3=0x7f050026;
+        public static final int titulo=0x7f050019;
         public static final int titulo_item=0x7f05000c;
         public static final int webview=0x7f05000a;
     }
@@ -374,19 +394,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_main=0x7f030000;
         public static final int advanced_search=0x7f030001;
         public static final int apptheme_tab_indicator_holo=0x7f030002;
-        public static final int custom_form_component=0x7f030003;
-        public static final int monedas_layout=0x7f030004;
-        public static final int pull_to_refresh_header_horizontal=0x7f030005;
-        public static final int pull_to_refresh_header_vertical=0x7f030006;
-        public static final int rango_precios_layout=0x7f030007;
-        public static final int row=0x7f030008;
-        public static final int search_result_item=0x7f030009;
-        public static final int search_view=0x7f03000a;
-        public static final int simple_form=0x7f03000b;
-        public static final int switch_layout=0x7f03000c;
+        public static final int custom_component_group=0x7f030003;
+        public static final int custom_form_component=0x7f030004;
+        public static final int monedas_layout=0x7f030005;
+        public static final int pull_to_refresh_header_horizontal=0x7f030006;
+        public static final int pull_to_refresh_header_vertical=0x7f030007;
+        public static final int rango_precios_layout=0x7f030008;
+        public static final int row=0x7f030009;
+        public static final int search_result_item=0x7f03000a;
+        public static final int search_view=0x7f03000b;
+        public static final int simple_form=0x7f03000c;
+        public static final int switch_layout=0x7f03000d;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int advanced_search_menu=0x7f0a0000;
+        public static final int main=0x7f0a0001;
+        public static final int search_results_menu=0x7f0a0002;
     }
     public static final class string {
         public static final int a_estrenar=0x7f070013;
@@ -395,13 +418,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int antiguedad=0x7f070017;
         public static final int antiguedad_unidad=0x7f070018;
         public static final int app_name=0x7f070006;
+        public static final int balcon=0x7f070023;
+        public static final int banos=0x7f070022;
+        public static final int cant_ambientes=0x7f070020;
+        public static final int caracteristicas_generales=0x7f07001f;
+        public static final int cargar_mas=0x7f070027;
         public static final int con_zonas=0x7f07000a;
         public static final int distribucion=0x7f07001b;
         public static final int dolar=0x7f07000d;
         public static final int dummy=0x7f070007;
+        public static final int en_suite=0x7f070024;
         public static final int expensas=0x7f070019;
         public static final int expensas_unidad=0x7f07001a;
+        public static final int mas_de=0x7f070021;
         public static final int moneda=0x7f07000f;
+        public static final int ordenar_por=0x7f070026;
+        public static final int otras_caracteristicas=0x7f07001e;
         public static final int peso=0x7f07000e;
         public static final int precio=0x7f070010;
         public static final int precio_desde=0x7f070011;
@@ -417,11 +449,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pull_to_refresh_release_label=0x7f070001;
         public static final int seleccione_barrio=0x7f070009;
         public static final int simple_search=0x7f07000c;
+        public static final int sort_destacadas=0x7f070028;
+        public static final int sort_precio_mayor=0x7f07002a;
+        public static final int sort_precio_menor=0x7f070029;
+        public static final int sort_recientes=0x7f07002b;
         public static final int sup_cubierta=0x7f070015;
         public static final int sup_total=0x7f070014;
         public static final int sup_unidad=0x7f070016;
         public static final int upp_no=0x7f07001d;
         public static final int upp_si=0x7f07001c;
+        public static final int ver_estadisticas=0x7f070025;
     }
     public static final class style {
         /** 
@@ -445,25 +482,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f090001;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
-        public static final int AutoCompleteTextViewAppTheme=0x7f090002;
-        public static final int ButtonAppTheme=0x7f090003;
-        public static final int ImageButtonAppTheme=0x7f090004;
-        public static final int MyActionBar=0x7f09000e;
-        public static final int ProgressBarAppTheme=0x7f090008;
-        public static final int RatingBarAppTheme=0x7f09000a;
-        public static final int RatingBarBigAppTheme=0x7f09000b;
-        public static final int RatingBarSmallAppTheme=0x7f09000c;
-        public static final int SeekBarAppTheme=0x7f090009;
-        public static final int SpinnerAppTheme=0x7f090005;
-        public static final int TabAppTheme=0x7f090006;
-        public static final int TabTextAppTheme=0x7f090007;
-        public static final int ToggleAppTheme=0x7f09000d;
-        public static final int _AppTheme=0x7f09000f;
+        public static final int AppTheme=0x7f090002;
+        public static final int AutoCompleteTextViewAppTheme=0x7f090003;
+        public static final int ButtonAppTheme=0x7f090004;
+        public static final int Divider=0x7f090000;
+        public static final int ImageButtonAppTheme=0x7f090005;
+        public static final int MyActionBar=0x7f09000f;
+        public static final int ProgressBarAppTheme=0x7f090009;
+        public static final int RatingBarAppTheme=0x7f09000b;
+        public static final int RatingBarBigAppTheme=0x7f09000c;
+        public static final int RatingBarSmallAppTheme=0x7f09000d;
+        public static final int SeekBarAppTheme=0x7f09000a;
+        public static final int SpinnerAppTheme=0x7f090006;
+        public static final int TabAppTheme=0x7f090007;
+        public static final int TabTextAppTheme=0x7f090008;
+        public static final int ToggleAppTheme=0x7f09000e;
+        public static final int _AppTheme=0x7f090010;
     }
     public static final class styleable {
         /** Attributes that can be used with a BooleanComponent.
@@ -506,6 +544,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name ar.uba.fi.sandbox:name
         */
         public static final int BooleanComponent_name = 1;
+        /** Attributes that can be used with a CustomComponentsGroup.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomComponentsGroup_label ar.uba.fi.sandbox:label}</code></td><td></td></tr>
+           </table>
+           @see #CustomComponentsGroup_label
+         */
+        public static final int[] CustomComponentsGroup = {
+            0x7f010013
+        };
+        /**
+          <p>This symbol is the offset where the {@link ar.uba.fi.sandbox.R.attr#label}
+          attribute's value can be found in the {@link #CustomComponentsGroup} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name ar.uba.fi.sandbox:label
+        */
+        public static final int CustomComponentsGroup_label = 0;
         /** Attributes that can be used with a EditTextComponent.
            <p>Includes the following attributes:</p>
            <table>

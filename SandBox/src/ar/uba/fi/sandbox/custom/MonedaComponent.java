@@ -14,12 +14,8 @@ public class MonedaComponent extends CustomFormComponentBase {
 	
 	public MonedaComponent(Context context, AttributeSet attrs) {
 		super(context,attrs);
-		
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		inflater.inflate(R.layout.monedas_layout,getContainer(),true);
 		if(!isInEditMode())
-			initComponents();
+			initComponents(context);
 	}
 	public MonedaComponent(Context context){
 		this(context,null);
@@ -37,7 +33,10 @@ public class MonedaComponent extends CustomFormComponentBase {
 	}
 	
 	
-	private void initComponents(){
+	private void initComponents(Context context){
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater.inflate(R.layout.monedas_layout,getContainer(),true);
 		setName(FormField.MONEDA);
 		setLabel(getContext().getString(R.string.moneda));
 		peso = (RadioButton) getContainer().findViewById(R.id.peso);

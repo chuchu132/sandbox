@@ -25,5 +25,19 @@
     <string name="distribucion">Distribución</string>
     <string name="upp_si">SI</string>
     <string name="upp_no">NO</string>
+    <string name="otras_caracteristicas">Otras características</string>
+    <string name="caracteristicas_generales">Características generales</string>
+    <string name="cant_ambientes">Ambientes</string>
+    <string name="mas_de">mas de</string>
+    <string name="banos">Baños</string>
+    <string name="balcon">Con balcón</string>
+    <string name="en_suite">Dormitorio en suite</string>
+    <string name="ver_estadisticas">Ver estadísticas</string>
+    <string name="ordenar_por">Ordenar por</string>
+    <string name="cargar_mas">Cargar mas resultados</string>
+    <string name="sort_destacadas">Destacadas</string>
+    <string name="sort_precio_menor">Menor Precio</string>
+    <string name="sort_precio_mayor">Mayor Precio</string>
+    <string name="sort_recientes">Más Recientes</string>
 
 </resources>

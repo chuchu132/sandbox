@@ -57,6 +57,10 @@ public abstract class CustomFormComponentBase extends LinearLayout{
 		label.setTextColor((isChecked)?getResources().getColor(R.color.apptheme_color):getResources().getColor(R.color.disabled));
 	}
 	
+	public void setChecked(boolean isChecked){
+		 stateCheck.setChecked(isChecked);
+	}
+	
 	public abstract void onEnabledChange(boolean enabled);
 	
 	public  Object getValue(){
