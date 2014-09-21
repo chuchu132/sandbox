@@ -3,7 +3,7 @@
     style="@style/AppTheme"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="ar.uba.fi.sandbox.MainActivity" >
+    tools:context="ar.uba.fi.mileem.MainActivity" >
 
     <ScrollView
         android:id="@+id/scrollView1"
