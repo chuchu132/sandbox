@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import ar.uba.fi.mileem.R;
 import ar.uba.fi.mileem.custom.CustomComponentsGroup;
+import ar.uba.fi.mileem.models.SearchForm;
 
 public class AdvancedFormActivity extends Activity {
 	
@@ -46,6 +47,7 @@ public class AdvancedFormActivity extends Activity {
 	}
 
 	public void openSearch() {
+		SearchForm.cleanInvalidFields(true);
 		Intent i = new Intent(AdvancedFormActivity.this, SearchActivity.class);
 		AdvancedFormActivity.this.startActivity(i);
 	}

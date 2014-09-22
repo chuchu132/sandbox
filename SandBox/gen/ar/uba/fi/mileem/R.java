@@ -452,7 +452,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int precio_desde=0x7f070012;
         public static final int precio_hasta=0x7f070013;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
- Just use standard Pull Down String when pulling up. These can be set for languages which require it 
          */
         public static final int pull_to_refresh_from_bottom_pull_label=0x7f070003;
         public static final int pull_to_refresh_from_bottom_refreshing_label=0x7f070005;

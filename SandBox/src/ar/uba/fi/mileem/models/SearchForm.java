@@ -1,10 +1,15 @@
 package ar.uba.fi.mileem.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
-
 import com.loopj.android.http.RequestParams;
 
 public class SearchForm {
+	private static FormField[] requireds = {FormField.NEIGHBORHOOD ,FormField.SURROUNDING_AREAS,FormField.PROPERTY_TYPE, FormField.OPERATION_TYPE };
+	private static FormField[] optionals = {FormField.EXCHANGE ,FormField.PRICE ,FormField.COVERED_AREA,FormField.TOTAL_AREA ,FormField.BRAND_NEW ,FormField.OLD, FormField.EXPENSE };
+	private static FormField[][] fields_by_category = {{},{FormField.ROOMS,FormField.BATHROOM,FormField.BALCONY, FormField.SUITE_ROOM},{},{}}; 
 	
 	private static HashMap<FormField, Object> form =  getDefaults();
 	
@@ -22,6 +27,22 @@ public class SearchForm {
 
 	public static void removeField(FormField field){
 		form.remove(field);
+	}
+
+	public static void cleanInvalidFields(boolean is_advanced){
+		 int categoty = Integer.parseInt(getSelectedCategory());
+		 Collection<FormField> collection = new ArrayList<FormField>();
+		 collection.addAll(Arrays.asList(requireds));
+		 if(is_advanced){
+			 collection.addAll(Arrays.asList(optionals));
+			 collection.addAll(Arrays.asList(fields_by_category[categoty]));
+		 }
+		 Object[] keys = form.keySet().toArray();
+		 for (int i = 0; i < keys.length; i++) {
+			 if(!collection.contains(keys[i])){
+					form.remove(keys[i]);
+				}
+		}
 	}
 	
 	public static RequestParams getAsRequestParams(){

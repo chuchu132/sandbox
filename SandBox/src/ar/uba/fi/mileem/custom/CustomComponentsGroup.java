@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import ar.uba.fi.mileem.R;
+import ar.uba.fi.mileem.models.FormField;
 import ar.uba.fi.mileem.models.SearchForm;
 
 public class CustomComponentsGroup extends LinearLayout {
@@ -98,6 +100,7 @@ public class CustomComponentsGroup extends LinearLayout {
 		setVisibility((visible) ? View.VISIBLE : View.GONE);
 	}
 
+	
 	public final void saveInputsValues() {
 		SharedPreferences sharedpreferences = getContext()
 				.getSharedPreferences("CustomComponentsGroup_" +getId(),

@@ -84,10 +84,12 @@ public class PriceRangeComponent extends CustomFormComponentBase {
 
 	@Override
 	public void restoreValue(SharedPreferences sharedpreferences) {
-		String value = sharedpreferences.getString(getName().toString(), "");
+		String value = sharedpreferences.getString(getName().toString(), ",");
 		String[] values = value.split(",");
-		from.setText(values[0]);
-		to.setText(values[1]);
+		if(values.length == 2){
+			from.setText(values[0]);
+			to.setText(values[1]);
+		}
 		setChecked(sharedpreferences.getBoolean(getName().toString()+"_check", true));
 	}
 

@@ -103,7 +103,7 @@ public class SimpleFormActivity extends Activity {
 		
 		btnSearch.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				cleanAdvancedSearchOptions();
+				SearchForm.cleanInvalidFields(false);
 				Intent i = new Intent(SimpleFormActivity.this,SearchActivity.class);
 				SimpleFormActivity.this.startActivity(i);
 			}
@@ -149,6 +149,24 @@ public class SimpleFormActivity extends Activity {
             }
         });
 		
+		neighborhoodsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                    int arg2, long arg3) {
+            	Object item = neighborhoodsSpinner.getSelectedItem();
+            	if( item instanceof SimpleEntry<?, ?>){
+            		Object value = (( SimpleEntry<?, ?>)item).getKey();
+            		SearchForm.setField(FormField.NEIGHBORHOOD, value);
+            	}
+
+            }
+
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+        });
+		
+		
 		includeNeighborsCheck.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton arg0, boolean checked) {
 				SearchForm.setField(FormField.SURROUNDING_AREAS, checked);		
@@ -157,18 +175,7 @@ public class SimpleFormActivity extends Activity {
 		
 	}
 	
-	private void cleanAdvancedSearchOptions(){
-		Object operation = SearchForm.getField(FormField.OPERATION_TYPE);
-		Object property = SearchForm.getField(FormField.PROPERTY_TYPE);
-		Object neighborhood = SearchForm.getField(FormField.NEIGHBORHOOD);
-		Object include_neighbors = SearchForm.getField(FormField.SURROUNDING_AREAS);
-		SearchForm.clearForm();
-		SearchForm.setField(FormField.OPERATION_TYPE,operation);
-		SearchForm.setField(FormField.PROPERTY_TYPE,property);
-		SearchForm.setField(FormField.NEIGHBORHOOD,neighborhood);
-		SearchForm.setField(FormField.SURROUNDING_AREAS,include_neighbors);
-	}
-	
+		
 	private ArrayList<SimpleEntry<String, String>> genericJSONArrayToEntryList(JSONArray ja){
 		  ArrayList<SimpleEntry<String, String>> options =  new ArrayList<SimpleEntry<String, String>>();
 		  for (int i = 0; i < ja.length(); i++) {
