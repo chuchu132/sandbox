@@ -22,7 +22,7 @@ public class ApiHelper {
 	
 		
 	public void search( RequestParams params,JsonHttpResponseHandler responseHandler){
-		doPost(Config.BASEURL + Config.PUBLICACIONES_CONTROLLER + "search", responseHandler);
+		doGet(Config.BASEURL + Config.PUBLICACIONES_CONTROLLER , responseHandler);
 	} 
 	
 	public void getPropertyTypes(JsonHttpResponseHandler responseHandler){
@@ -41,6 +41,7 @@ public class ApiHelper {
 		doGet(url,null, responseHandler);
 	}
 	
+	@SuppressWarnings("unused")
 	private void doPost(String url, JsonHttpResponseHandler responseHandler){
 		doPost(url,null, responseHandler);
 	}

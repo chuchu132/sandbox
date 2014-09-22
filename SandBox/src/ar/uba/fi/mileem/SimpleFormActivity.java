@@ -48,7 +48,7 @@ public class SimpleFormActivity extends Activity {
 	}
 	
 	
-	protected void onResume() {
+	protected void onStart() {
 		super.onResume();
 		neighborhoodsSpinner.setEnabled(false);
 		propertyTypeSpinner.setEnabled(false);
@@ -103,6 +103,7 @@ public class SimpleFormActivity extends Activity {
 		
 		btnSearch.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				cleanAdvancedSearchOptions();
 				Intent i = new Intent(SimpleFormActivity.this,SearchActivity.class);
 				SimpleFormActivity.this.startActivity(i);
 			}
@@ -154,6 +155,18 @@ public class SimpleFormActivity extends Activity {
 			}
 		});
 		
+	}
+	
+	private void cleanAdvancedSearchOptions(){
+		Object operation = SearchForm.getField(FormField.OPERATION_TYPE);
+		Object property = SearchForm.getField(FormField.PROPERTY_TYPE);
+		Object neighborhood = SearchForm.getField(FormField.NEIGHBORHOOD);
+		Object include_neighbors = SearchForm.getField(FormField.SURROUNDING_AREAS);
+		SearchForm.clearForm();
+		SearchForm.setField(FormField.OPERATION_TYPE,operation);
+		SearchForm.setField(FormField.PROPERTY_TYPE,property);
+		SearchForm.setField(FormField.NEIGHBORHOOD,neighborhood);
+		SearchForm.setField(FormField.SURROUNDING_AREAS,include_neighbors);
 	}
 	
 	private ArrayList<SimpleEntry<String, String>> genericJSONArrayToEntryList(JSONArray ja){

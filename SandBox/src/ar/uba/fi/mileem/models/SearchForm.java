@@ -42,6 +42,23 @@ public class SearchForm {
 		 return tmp;
 	}
 	
+	public static String getSelectedCategory() {
+		String property_type = (String) getField(FormField.PROPERTY_TYPE);
+		switch (Integer.parseInt(property_type)) {
+		case 1:
+		case 2:
+		case 3:
+			return "1";
+		case 4:
+		case 5:
+		case 6:
+			return "2";
+		default:
+			return "3";
+		}
+	}
+	
+	
    
 	
 }

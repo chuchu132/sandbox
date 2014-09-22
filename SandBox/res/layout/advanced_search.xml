@@ -16,7 +16,7 @@
         android:orientation="vertical" >
         
         <ar.uba.fi.mileem.custom.CustomComponentsGroup
-            android:id="@+id/caracteristicas_generales"
+            android:id="@+id/general_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -82,7 +82,7 @@
 		    android:layout_marginTop="@dimen/activity_vertical_margin" />
 
         <ar.uba.fi.mileem.custom.CustomComponentsGroup
-            android:id="@+id/caracteristicas_extras"
+            android:id="@+id/extra_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

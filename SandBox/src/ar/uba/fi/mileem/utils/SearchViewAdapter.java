@@ -66,7 +66,6 @@ public class SearchViewAdapter extends ArrayAdapter<PublicationResult> {
     }
   
 
-
   public boolean hasStableIds() {
     return true;
   }

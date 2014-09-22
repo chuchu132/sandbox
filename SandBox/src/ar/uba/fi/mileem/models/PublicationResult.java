@@ -1,9 +1,11 @@
 package ar.uba.fi.mileem.models;
 
+import java.util.Date;
 import java.util.Random;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 
 
@@ -27,4 +29,18 @@ public class PublicationResult {
 			return "Calle Falsa " + height;
 	}
 
+	/* El precio es el numero de la calle*/
+	public Float getPrice(){
+		return Float.valueOf(height);
+	}
+	
+	public Date getPublicationDate(){
+		return new Date();
+	}
+	
+	/* Destacadas son las q tiene numeros pares*/
+	public Boolean isHighlighted(){
+		return  (height%2 == 0);
+	}
+	
 }
