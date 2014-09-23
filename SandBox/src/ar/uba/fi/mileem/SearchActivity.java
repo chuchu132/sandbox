@@ -32,6 +32,7 @@ import ar.uba.fi.mileem.models.PublicationResult;
 import ar.uba.fi.mileem.models.SearchForm;
 import ar.uba.fi.mileem.models.SortFilter;
 import ar.uba.fi.mileem.utils.ApiHelper;
+import ar.uba.fi.mileem.utils.DialogFactory;
 import ar.uba.fi.mileem.utils.SearchCache;
 import ar.uba.fi.mileem.utils.SearchViewAdapter;
 import ar.uba.fi.mileem.R;
@@ -90,15 +91,19 @@ public class SearchActivity extends ListActivity {
 
 	
 	private void resetSearch() {
-		if(refreshEnabled){
-			timestamp = System.currentTimeMillis();
-			SearchCache.getInstance().clearResults();
-			synchronized (adapterLock) {
-				mAdapter.notifyDataSetChanged();
+		if(ApiHelper.getInstance().isNetworkAvailable(this)){
+			if(refreshEnabled){
+				timestamp = System.currentTimeMillis();
+				SearchCache.getInstance().clearResults();
+				synchronized (adapterLock) {
+					mAdapter.notifyDataSetChanged();
+				}
+				searchMoreResults();
+			}else{
+				Log.e("refreshSearch", "NO PUEDE");
 			}
-			searchMoreResults();
 		}else{
-			Log.e("refreshSearch", "NO PUEDE");
+			DialogFactory.getFactory().showError(this, R.string.oops, R.string.connection_error, true);
 		}
 	}
 

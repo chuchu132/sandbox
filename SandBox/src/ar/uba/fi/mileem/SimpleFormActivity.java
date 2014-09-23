@@ -6,6 +6,7 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.Spinner;
 import ar.uba.fi.mileem.models.FormField;
 import ar.uba.fi.mileem.models.SearchForm;
 import ar.uba.fi.mileem.utils.ApiHelper;
+import ar.uba.fi.mileem.utils.DialogFactory;
 import ar.uba.fi.mileem.utils.JsonCacheHttpResponseHandler;
 import ar.uba.fi.mileem.utils.OperationTypeSpinnerAdapter;
 import ar.uba.fi.mileem.utils.SpinnerAdapter;
@@ -54,7 +56,10 @@ public class SimpleFormActivity extends Activity {
 		propertyTypeSpinner.setEnabled(false);
 		btnSearch.setEnabled(false);
 		btnAdvancedSearch.setEnabled(false);
-		initForm();
+		if(ApiHelper.getInstance().isNetworkAvailable(this))
+			initForm();
+		else
+			DialogFactory.getFactory().showError(this, R.string.oops, R.string.connection_error);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -74,6 +79,12 @@ public class SimpleFormActivity extends Activity {
 						neighborhoodsSpinner.setSelection(position);
 				 }
 			}
+			
+			public void onFailure(int statusCode, Header[] headers,
+					Throwable throwable, JSONObject errorResponse) {
+				super.onFailure(statusCode, headers, throwable, errorResponse);
+				DialogFactory.getFactory().showError(SimpleFormActivity.this, R.string.oops, R.string.connection_error,false);
+			}
 		});
 		
 		ApiHelper.getInstance().getPropertyTypes(new JsonCacheHttpResponseHandler(){
@@ -86,7 +97,15 @@ public class SimpleFormActivity extends Activity {
 				 if(SearchForm.getField(FormField.PROPERTY_TYPE) != null ){
 						int position =adapter.getPosition(new SimpleEntry<String, String>((String)SearchForm.getField(FormField.PROPERTY_TYPE),null));
 						propertyTypeSpinner.setSelection(position);
+					
 				 }
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					Throwable throwable, JSONObject errorResponse) {
+				super.onFailure(statusCode, headers, throwable, errorResponse);
+				DialogFactory.getFactory().showError(SimpleFormActivity.this, R.string.oops, R.string.connection_error,false);
 			}
 		});
 		
@@ -103,15 +122,24 @@ public class SimpleFormActivity extends Activity {
 		
 		btnSearch.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				SearchForm.cleanInvalidFields(false);
-				Intent i = new Intent(SimpleFormActivity.this,SearchActivity.class);
-				SimpleFormActivity.this.startActivity(i);
+				if(ApiHelper.getInstance().isNetworkAvailable(SimpleFormActivity.this)){
+					SearchForm.cleanInvalidFields(false);
+					Intent i = new Intent(SimpleFormActivity.this,SearchActivity.class);
+					SimpleFormActivity.this.startActivity(i);
+				}else{
+					DialogFactory.getFactory().showError(SimpleFormActivity.this, R.string.oops, R.string.connection_error);
+				}
 			}
 		});
 		btnAdvancedSearch.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent i = new Intent(SimpleFormActivity.this,AdvancedFormActivity.class);
-				SimpleFormActivity.this.startActivity(i);
+				if (ApiHelper.getInstance().isNetworkAvailable(SimpleFormActivity.this)) {
+					Intent i = new Intent(SimpleFormActivity.this,
+							AdvancedFormActivity.class);
+					SimpleFormActivity.this.startActivity(i);
+				}else{
+					DialogFactory.getFactory().showError(SimpleFormActivity.this, R.string.oops, R.string.connection_error);
+				}
 			}
 		});
 		

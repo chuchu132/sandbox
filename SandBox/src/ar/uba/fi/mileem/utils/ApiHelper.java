@@ -2,6 +2,9 @@ package ar.uba.fi.mileem.utils;
 
 import com.loopj.android.http.*;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import ar.uba.fi.mileem.Config;
 
 public class ApiHelper {
@@ -69,4 +72,13 @@ public class ApiHelper {
 				client.post(url, rq, responseHandler);
 		}
 	}
+	
+	public  boolean isNetworkAvailable(Context ctx) {
+	    ConnectivityManager connectivityManager 
+	          = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+	}
+	
+	
 }
