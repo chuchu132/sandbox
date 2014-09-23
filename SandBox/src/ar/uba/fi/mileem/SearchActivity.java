@@ -1,12 +1,11 @@
 package ar.uba.fi.mileem;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -19,6 +18,7 @@ import android.app.ListActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,11 +28,10 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 import ar.uba.fi.mileem.models.PublicationResult;
 import ar.uba.fi.mileem.models.SearchForm;
+import ar.uba.fi.mileem.models.SortFilter;
 import ar.uba.fi.mileem.utils.ApiHelper;
-import ar.uba.fi.mileem.utils.PublicationResultsSortFactory;
 import ar.uba.fi.mileem.utils.SearchCache;
 import ar.uba.fi.mileem.utils.SearchViewAdapter;
 import ar.uba.fi.mileem.R;
@@ -42,8 +41,9 @@ public class SearchActivity extends ListActivity {
 	private List<PublicationResult> mListItems;
 	private PullToRefreshListView mPullRefreshListView;
 	private ArrayAdapter<PublicationResult> mAdapter;
-	private Comparator<PublicationResult> comparator = null;
-
+	private SortFilter filter = null;
+	private long timestamp = 0;
+	private boolean refreshEnabled = true;
 	private Object adapterLock = new Object();
 
 	/** Called when the activity is first created. */
@@ -68,8 +68,8 @@ public class SearchActivity extends ListActivity {
 						// Update the LastUpdatedLabel
 						refreshView.getLoadingLayoutProxy()
 								.setLastUpdatedLabel(label);
-
-						searchMoreResults();
+						if(refreshEnabled)
+							searchMoreResults();
 					}
 				});
 
@@ -81,30 +81,79 @@ public class SearchActivity extends ListActivity {
 		// Need to use the Actual ListView when registering for Context Menu
 		registerForContextMenu(actualListView);
 
-		comparator = PublicationResultsSortFactory.getSortHighlightedFirst();
+		filter = SortFilter.HIGHLIGHTED;
 		mListItems = SearchCache.getInstance().getResults();
 		mAdapter = new SearchViewAdapter(this, mListItems);
 		actualListView.setAdapter(mAdapter);
-		searchMoreResults();
+		resetSearch();
+	}
+
+	
+	private void resetSearch() {
+		if(refreshEnabled){
+			timestamp = System.currentTimeMillis();
+			SearchCache.getInstance().clearResults();
+			synchronized (adapterLock) {
+				mAdapter.notifyDataSetChanged();
+			}
+			searchMoreResults();
+		}else{
+			Log.e("refreshSearch", "NO PUEDE");
+		}
+	}
+
+	public void restoreFlags() {
+		refreshEnabled = true;
+		mPullRefreshListView.onRefreshComplete();
 	}
 
 	
 	
 	private void searchMoreResults() {
+		refreshEnabled = false;
 		mPullRefreshListView.setRefreshing(true);
 		RequestParams rq = SearchForm.getAsRequestParams();
 		rq.put("offset", SearchCache.getInstance().getResults().size());
+		rq.put("timestamp", timestamp);
+		rq.put("sort",filter.toString());
 		ApiHelper.getInstance().search(rq, new JsonHttpResponseHandler() {
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray response) {
 				super.onSuccess(statusCode, headers, response);
 				new DataTask(response).execute();
 			}
-
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					String responseString, Throwable throwable) {
+				super.onFailure(statusCode, headers, responseString, throwable);
+				Log.e("searchMoreResults", "onFailure");
+				restoreFlags();
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					Throwable throwable, JSONArray errorResponse) {
+				// TODO Auto-generated method stub
+				super.onFailure(statusCode, headers, throwable, errorResponse);
+				Log.e("searchMoreResults", "onFailure2");
+				restoreFlags();
+			}
+			
+			@Override
+			public void onFailure(int statusCode, Header[] headers,
+					Throwable throwable, JSONObject errorResponse) {
+				// TODO Auto-generated method stub
+				super.onFailure(statusCode, headers, throwable, errorResponse);
+				Log.e("searchMoreResults", "onFailure3");
+				restoreFlags();
+				
+			}
 		});
 
 	}
 
+	
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.search_results_menu, menu);
@@ -115,46 +164,48 @@ public class SearchActivity extends ListActivity {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.action_refresh:
-			searchMoreResults();
+			resetSearch();
 			return true;
 		case R.id.sort_destacados:
 			Toast.makeText(this, R.string.sort_destacadas, Toast.LENGTH_SHORT)
 					.show();
-			comparator =  PublicationResultsSortFactory.getSortHighlightedFirst();
+			filter = SortFilter.HIGHLIGHTED;
 			break;
 		case R.id.sort_precio_mayor:
 			Toast.makeText(this, R.string.sort_precio_mayor, Toast.LENGTH_SHORT)
 					.show();
-			comparator =  PublicationResultsSortFactory.getSortByPrice(false);			
+			filter = SortFilter.PRICE_DESC;
 			break;
 		case R.id.sort_precio_menor:
 			Toast.makeText(this, R.string.sort_precio_menor, Toast.LENGTH_SHORT)
 					.show();
-			comparator =  PublicationResultsSortFactory.getSortByPrice(true);
+			filter = SortFilter.PRICE_ASC;
 			break;
 		case R.id.sort_recientes:
 			Toast.makeText(this, R.string.sort_recientes, Toast.LENGTH_SHORT)
 					.show();
-			comparator =  PublicationResultsSortFactory.getSortByRecentPublicationDate();
+			filter = SortFilter.PUBLICATION_DATE_DESC;
 			break;
 		default:
 			return false;
 		}
-		new SortTask().execute();
+		resetSearch();
 		return true;
 	}
+
+	
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
-		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
-
-		menu.setHeaderTitle("Item: "
-				+ getListView().getItemAtPosition(info.position));
-		menu.add("Item 1");
-		menu.add("Item 2");
-		menu.add("Item 3");
-		menu.add("Item 4");
+//		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
+//
+//		menu.setHeaderTitle("Item: "
+//				+ getListView().getItemAtPosition(info.position));
+//		menu.add("Item 1");
+//		menu.add("Item 2");
+//		menu.add("Item 3");
+//		menu.add("Item 4");
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
 
@@ -193,7 +244,6 @@ public class SearchActivity extends ListActivity {
 			}
 			
 			 SearchCache.getInstance().addResults(list);
-			 Collections.sort(SearchCache.getInstance().getResults(), comparator);
 			 return null;
 		}
 
@@ -203,32 +253,10 @@ public class SearchActivity extends ListActivity {
 				mAdapter.notifyDataSetChanged();
 			}
 			// Call onRefreshComplete when the list has been refreshed.
-			mPullRefreshListView.onRefreshComplete();
-
+			 restoreFlags();
 			super.onPostExecute(results);
 		}
 	}
 
-	private class SortTask extends
-			AsyncTask<Void, Void, ArrayList<PublicationResult>> {
-
-		@Override
-		protected ArrayList<PublicationResult> doInBackground(Void... params) {
-			synchronized (adapterLock) {
-				 Collections.sort(SearchCache.getInstance().getResults(), comparator);
-			}
-			
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(ArrayList<PublicationResult> results) {
-			synchronized (adapterLock) {
-				mAdapter.notifyDataSetChanged();
-			}
-
-			super.onPostExecute(results);
-		}
-	}
 
 }
