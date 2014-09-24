@@ -232,13 +232,9 @@ public class SearchActivity extends ListActivity {
 
 			/* Codigo que simula la carga de datos */
 			ArrayList<PublicationResult> list = new ArrayList<PublicationResult>();
-			try {
 				for (int i = 0; i < 5; ++i) {
 					list.add(new PublicationResult());
 				}
-				Thread.sleep(4000);
-			} catch (InterruptedException e) {
-			}
 			
 			 SearchCache.getInstance().addResults(list);
 			 return null;

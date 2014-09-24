@@ -178,8 +178,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int app_color_contrast=0x7f080001;
-        public static final int apptheme_color=0x7f080002;
+        public static final int apptheme_color=0x7f080003;
         public static final int disabled=0x7f080000;
+        public static final int highlighted_publication_background=0x7f080002;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -369,6 +370,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int hasta=0x7f05002d;
         public static final int include_neighbors=0x7f050036;
         public static final int item_preview=0x7f05002f;
+        public static final int item_price=0x7f05000d;
         public static final int label=0x7f05001e;
         public static final int loading=0x7f05000e;
         public static final int manualOnly=0x7f050004;
@@ -399,7 +401,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int state=0x7f050020;
         public static final int subtitulo_item=0x7f050030;
         public static final int switch_id=0x7f050039;
-        public static final int textView1=0x7f05000d;
         public static final int textView3=0x7f05002c;
         public static final int texto=0x7f050021;
         public static final int titulo=0x7f05001c;

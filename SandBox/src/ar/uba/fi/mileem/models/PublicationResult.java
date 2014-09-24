@@ -19,7 +19,7 @@ public class PublicationResult {
 		
 		Random r=new Random();
 		height = (r.nextInt(1000));
-		String json = "{  \"id\": 5,  \"price_with_currency\": \"100.000 $\",  \"highlight\": "+((height%2==0)?"false":"true")+",  \"property\": [    {      \"address\": \"Dr E Finochietto 850\",      \"characteristic_instances\": [],      \"images\": [  \"http://www.alquilerentaturista.com.ar/apartamentos/buenosairesg.jpg\",\t\t  \"http://www.rentnbaires.com/JUS/alquiler-temporario-departamentos/images/calo1.jpg\",\t\t  \"http://www.alquiler-temporario.com/imagenes/alquiler-temporario-departamento-1-dormitorio-argentina-cordoba/GetAttachment7.jpg\",\t\t  \"http://imganuncios.mitula.net/alquiler_de_03_departamentos_de_estreno_96752207889417804.jpg\",],      \"videos\": [\"https://www.youtube.com/watch?v=-F_9fgtEKYg\"],      \"property_type\": {        \"id\": 1,        \"name\": \"Casa\"      },      \"location\": {        \"id\": 2,        \"name\": \"Belgrano\"      }    }  ],  \"user_id\": 1}";
+		String json = "{  \"id\": 5,  \"price_with_currency\": \"$ 100."+height+"\",  \"highlight\": "+((height%2==0)?"false":"true")+",  \"property\": [    {      \"address\": \"Dr E Finochietto 850\",      \"characteristic_instances\": [],      \"images\": [  \"http://www.alquilerentaturista.com.ar/apartamentos/buenosairesg.jpg\",\t\t  \"http://www.rentnbaires.com/JUS/alquiler-temporario-departamentos/images/calo1.jpg\",\t\t  \"http://www.alquiler-temporario.com/imagenes/alquiler-temporario-departamento-1-dormitorio-argentina-cordoba/GetAttachment7.jpg\",\t\t  \"http://imganuncios.mitula.net/alquiler_de_03_departamentos_de_estreno_96752207889417804.jpg\",],      \"videos\": [\"https://www.youtube.com/watch?v=-F_9fgtEKYg\"],      \"property_type\": {        \"id\": 1,        \"name\": \"Casa\"      },      \"location\": {        \"id\": 2,        \"name\": \"Belgrano\"      }    }  ],  \"user_id\": 1}";
 		try {
 			publication = new JSONObject(json);
 		} catch (JSONException e) {
@@ -47,6 +47,14 @@ public class PublicationResult {
 		return  publication.optBoolean("highlight");
 	}
 
+	public String getNeighborhood(){
+		try{
+			return  optProperty().optJSONObject("location").optString("name");
+		}catch( Exception e){
+			return "";
+		}
+	}
+	
 	public String getMainImage(){
 		JSONArray ja = optProperty().optJSONArray("images");
 		if(ja != null){
