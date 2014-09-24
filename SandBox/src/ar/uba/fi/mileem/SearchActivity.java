@@ -203,14 +203,6 @@ public class SearchActivity extends ListActivity {
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
-//		AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
-//
-//		menu.setHeaderTitle("Item: "
-//				+ getListView().getItemAtPosition(info.position));
-//		menu.add("Item 1");
-//		menu.add("Item 2");
-//		menu.add("Item 3");
-//		menu.add("Item 4");
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
 

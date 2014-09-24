@@ -324,17 +324,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int apptheme_textfield_focused_holo_light=0x7f020078;
         public static final int default_ptr_flip=0x7f020079;
         public static final int default_ptr_rotate=0x7f02007a;
-        public static final int ic_action_logors=0x7f02007b;
-        public static final int ic_action_refresh=0x7f02007c;
-        public static final int ic_action_search=0x7f02007d;
-        public static final int ic_action_share=0x7f02007e;
-        public static final int ic_action_sort_by_size=0x7f02007f;
-        public static final int ic_chart=0x7f020080;
-        public static final int ic_launcher=0x7f020081;
-        public static final int indicator_arrow=0x7f020082;
-        public static final int indicator_bg_bottom=0x7f020083;
-        public static final int indicator_bg_top=0x7f020084;
-        public static final int placeholder=0x7f020085;
+        public static final int dialog_background=0x7f02007b;
+        public static final int ic_action_logors=0x7f02007c;
+        public static final int ic_action_refresh=0x7f02007d;
+        public static final int ic_action_search=0x7f02007e;
+        public static final int ic_action_share=0x7f02007f;
+        public static final int ic_action_sort_by_size=0x7f020080;
+        public static final int ic_chart=0x7f020081;
+        public static final int ic_launcher=0x7f020082;
+        public static final int indicator_arrow=0x7f020083;
+        public static final int indicator_bg_bottom=0x7f020084;
+        public static final int indicator_bg_top=0x7f020085;
+        public static final int placeholder=0x7f020086;
     }
     public static final class id {
         public static final int action_chart=0x7f05003d;
